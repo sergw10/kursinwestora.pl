@@ -5,5 +5,10 @@ $(function() {
 	}, function() {
 		$(this).removeClass('hover');
 	});
+
+	// Burger menu open
+  $('.burger-menu__wrap').click(function() {
+  	$(this).toggleClass('open');
+  });
 	
 });

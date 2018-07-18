@@ -472,14 +472,17 @@ form.processing .form-preload {
   display: inline-block;
   vertical-align: middle;
 }
-svg {
-  use {
-    @include transition(all .3s ease);
-  }
+
+p,
+svg use {
+  @include transition(all .3s ease);
 }
+
 // |END| Service classes.
 
-// Blocks.
+// Parts
+@import 'parts/burger_menu';
+
+// Blocks
 @import 'blocks/header';
-@import 'blocks/new_header';
 @import 'blocks/footer';

@@ -1,0 +1,45 @@
+// Form page styles.
+@import '../main';
+
+// Libs.
+@import '../libs/swiper';
+@import '../libs/_flipclock';
+@import '../libs/datetimepicker/_bootstrap_datetimepicker';
+
+// Parts.
+@import '../parts/lecturers';
+@import '../parts/form';
+
+.form-bg {
+    display: block;
+    width: 100%;
+    @extend %clearfix;
+    padding: 70px 0;
+    background: rgba(27,68,103,1);
+    background:
+    -webkit-radial-gradient(farthest-corner circle at 85% 200%, rgba(27,68,103,1) 0%, rgba(113,184,199,1) 50%, transparent),
+    -webkit-radial-gradient(farthest-corner circle at 100% 200%, rgba(27,68,103,1) 0%, rgba(113,184,199,0.7) 46%, transparent),
+    -webkit-radial-gradient(farthest-corner circle at 0px 0px, rgba(27,68,103,1) 0%, rgba(113,184,199,1) 50%, #479cd8);
+    background:
+    radial-gradient(farthest-corner circle at 85% 200%, rgba(27,68,103,1) 0%, rgba(113,184,199,1) 50%, transparent),
+    radial-gradient(farthest-corner circle at 100% 200%, rgba(27,68,103,1) 0%, rgba(113,184,199,0.7) 46%, transparent),
+    radial-gradient(farthest-corner circle at 0px 0px, rgba(27,68,103,1) 0%, rgba(113,184,199,1) 50%, #479cd8);
+
+    @media screen and (max-width: 630px) {
+        padding: 0;
+    }
+}
+.form-wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 630px;
+    background: $light_grey;
+    @include box-shadow(0 0 15px 0 #6d6d6d);
+    padding: 40px 15px 0;
+
+    @media screen and (max-width: 630px) {
+        width: 100%;
+        margin: 0;
+        @include box-shadow(none);
+    }
+}

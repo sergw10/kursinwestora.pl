@@ -1,0 +1,156 @@
+.lecturers {
+	text-align: right;
+	background: $white;
+
+	&:before {
+		@extend %emptyabsolute;
+		width: 50%;
+		right: 0;
+		height: 100%;
+		top: 0;
+
+		@media screen and (min-width: 1200px) {
+			background-image: url("../../img/wykres.jpg");
+			background-repeat: no-repeat;
+			background-position: left top;
+			background-size: cover;
+		}
+	}
+
+	@media screen and (max-width: 1199px) {
+		text-align: center;
+	}
+
+	h2 {
+		margin: 70px 0 20px;
+		text-align: inherit;
+	}
+
+	.lecturers-slider {
+		overflow: visible;
+	}
+
+	.lecturer-block {
+
+		.lecturer-name {
+			color: $main_color;
+			font-size: 36px;
+			line-height: 40px;
+			font-weight: map-get($weight, normal);
+			margin-bottom: 20px;
+			text-align: right;
+
+			@media screen and (max-width: 1199px) {
+				text-align: center;
+				font-size: 26px;
+				line-height: 30px;
+			}
+		}
+
+		.lecturer-desc {
+			font-size: 20px;
+			line-height: 26px;
+			color: $dark_grey;
+			text-align: justify;
+			font-weight: map-get($weight, light);
+			margin-bottom: 70px;
+
+			@media screen and (max-width: 1199px) {
+				font-size: 16px;
+				line-height: 20px;
+				font-weight: map-get($weight, normal);
+			}
+
+			p {
+				padding-left: 0;
+
+				@media screen and (min-width: 1200px) {
+					padding-left: 5%;
+				}
+				@media screen and (min-width: 1600px) {
+					padding-left: 15%;
+				}
+				@media screen and (min-width: 1920px) {
+					padding-left: 25%;
+				}
+				@media screen and (min-width: 2100px) {
+					padding-left: 35%;
+				}
+			}
+		}
+
+		.lecturer-img {
+			display: block;
+			position: absolute;
+		    left: 100%;
+		    bottom: -1px;
+			text-align: right;
+		    width: 370px;
+		    height: calc(100% + 100px);
+
+			// May want to do this if there is risk the container may be narrower than the element inside.
+  			white-space: nowrap;
+
+			&:before {
+				// VErtical aligner.
+				// The ghost, nudged to maintain perfect centering.
+				content: '';
+				display: inline-block;
+				height: 100%;
+				vertical-align: bottom;
+				//margin-right: -0.25em; // Adjusts for spacing
+			}
+
+			img {
+				display: inline-block;
+ 				vertical-align: middle;
+				-webkit-filter: drop-shadow(10px 10px 14px rgba(0,0,0,0.5));
+    			filter: drop-shadow(10px 10px 14px rgba(0,0,0,0.25));
+			}
+		}
+
+		.lecturer-img-thumb {
+			margin-bottom: 20px;
+
+			img {
+				display: inline-block;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	.lecturers-pagination {
+		display: block;
+		left: 0;
+		right: 0;
+		padding-left: 15px;
+		padding-right: 15px;
+		height: 25px;
+		position: absolute;
+		bottom: 30px;
+
+		.swiper-pagination {
+			display: block;
+			position: relative;
+			float: right;
+
+			.swiper-pagination-bullet {
+				width: 25px;
+				height: 25px;
+				background: $white;
+				border: 1px solid $main_color;
+				opacity: 1;
+
+				&:hover {
+					background: #e2e2e2;
+				}
+
+				&.swiper-pagination-bullet-active {
+					background: $main_color;
+				}
+			}
+		}
+	}
+}

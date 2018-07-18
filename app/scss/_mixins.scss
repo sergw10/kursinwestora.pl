@@ -1,0 +1,464 @@
+// Font rules for the usual text.
+// @extend %font_usual;
+%font_usual {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 300;
+
+    @media screen and (max-width: 1199px) {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+}
+
+// Font rules for the title.
+// @extend %font_title;
+%font_title {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 1199px) {
+        font-size: 30px;
+        line-height: 36px;
+    }
+}
+
+// Font rules for the subtitle.
+// @extend %font_subtitle;
+%font_subtitle {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 400;
+
+    @media screen and (max-width: 1199px) {
+        font-size: 26px;
+        line-height: 30px;
+    }
+}
+
+// Border radius.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include border-radius(10px)
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Set a rem font size with pixel fallback.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include font-size(14px)
+// --Output:
+// font-size: 14px;//Will be overridden if browser supports rem
+// font-size: 0.8rem;
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+// Cross browser opacity.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include opacity(0.8);
+@mixin opacity($opacity) {
+    $opacity-ie: $opacity * 100;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity-ie)";// IE 8
+    filter: alpha(opacity=$opacity-ie); // IE 5-7
+    -moz-opacity: $opacity; // Netscape
+    -khtml-opacity: $opacity; // Safari 1.x
+    opacity: $opacity;
+}
+
+// Clearfix. Works in IE6 and up.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @extend %clearfix;
+%clearfix {
+    *zoom: 1;
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+// Before-after fix for graphic element.
+// --Usage:
+// @extend %emptyabsolute;
+%emptyabsolute {
+    display: block;
+    position: absolute;
+    content: '';
+}
+
+// Transitions.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include transition(color .3s ease);
+@mixin transition($args) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transform.
+// --Usage:
+// @include transform(translate(-14px));
+@mixin transform($args) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// Box-shadow.
+// --Usage:
+// @include box-shadow(0 20px 12px #d0d0d0);
+@mixin box-shadow($args) {
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    -ms-box-shadow: $args;
+    -o-box-shadow: $args;
+    box-shadow: $args;
+}
+
+// Keyframes.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include keyframes(slide-down) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+// Animation.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @include animation('slide-down 5s 3');
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+// Visually hiding an element.
+// http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+// --Usage:
+// @extend %visuallyhidden;
+%visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+/// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
+/// https://github.com/gillesbertaux/andy
+/// @access public
+/// @param {String} $font-name - Font family name
+/// @param {String} $file-name - File name (no extension)
+/// @param {String | Number} $weight [normal] - Font weight
+/// @param {String} $style [normal] - Font style
+/// @example scss - Usage
+///   @include font-face('gotham', '/fonts/gotham');
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($file-name + '.eot');
+    src: url($file-name + '.eot?#iefix')  format('embedded-opentype'),
+         url($file-name + '.woff') format('woff'),
+         url($file-name + '.ttf')  format('truetype'),
+         url($file-name + '.svg##{$font-name}')  format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+/// Generates line-height values in both pixels and rems.
+/// https://github.com/gillesbertaux/andy
+/// @access public
+/// @param {Number} $height-value [12] - Height value
+/// @example scss - Usage
+///   .foo {
+///     @include line-height(16);
+///   }
+/// @example css - Result
+///   .foo {
+///     line-height: 16px;
+///     line-height: 1rem;
+///   }
+@mixin line-height($height-value: 12) {
+    line-height: $height-value * 1px; //fallback for old browsers
+    line-height: (1 / ($base-font-size / ($base-font-size * 0 + 1)) * $height-value * 1rem);
+}
+
+/// Background gradient helper
+/// https://github.com/gillesbertaux/andy
+/// @access public
+/// @param {Color} $start-color - Start color
+/// @param {Color} $end-color - End color
+/// @param {String} $orientation - Type of gradient, either `vertical`, `horizontal` or `radial`
+/// @example scss - Usage
+///   .foo {
+///     @include background-gradient(red, black, 'vertical');
+///   }
+/// @example css - Result
+///   .foo {
+///     background: -webkit-linear-gradient(top, red, black);
+///     background: linear-gradient(to bottom, red, black);
+///   }
+@mixin background-gradient($start-color, $end-color, $orientation) {
+    background: $start-color;
+
+    @if $orientation == 'vertical' {
+      background: -webkit-linear-gradient(top, $start-color, $end-color);
+      background: linear-gradient(to bottom, $start-color, $end-color);
+    } @else if $orientation == 'horizontal' {
+      background: -webkit-linear-gradient(left, $start-color, $end-color);
+      background: linear-gradient(to right, $start-color, $end-color);
+    } @else {
+      background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+      background: radial-gradient(ellipse at center, $start-color, $end-color);
+    }
+}
+
+/// Select all children from the first to `$num`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin first($num) {
+    @if $num == 1 {
+        &:first-child {
+            @content;
+        }
+    } @else {
+        &:nth-child(-n + #{$num}) {
+            @content;
+        }
+    }
+}
+/// Select all children from the last to `$num`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin last($num) {
+    &:nth-last-child(-n + #{$num}) {
+        @content;
+    }
+}
+/// Select all children after the first to `$num`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin after-first($num) {
+    &:nth-child(n + #{$num + 1}) {
+        @content;
+    }
+}
+/// Select all children before `$num` from the last.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin from-end($num) {
+    &:nth-last-child(#{$num}) {
+        @content;
+    }
+}
+/// Select all children between `$first` and `$last`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin between($first, $last) {
+    &:nth-child(n + #{$first}):nth-child(-n + #{$last}) {
+        @content;
+    }
+}
+/// Select all children but `$num`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin all-but($num) {
+    &:not(:nth-child(#{$num})) {
+        @content;
+    }
+}
+/// Select children each `$num`.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+/// @alias every
+@mixin each($num) {
+    &:nth-child(#{$num}n) {
+        @content;
+    }
+}
+/// Select the `$num` child from the start and the `$num` child from the last.
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin from-first-last($num) {
+    &:nth-child(#{$num}),
+    &:nth-last-child(#{$num}) {
+        @content;
+    }
+}
+/// Select the item in the middle of `$num` child. Only works with odd number
+/// https://lukyvj.github.io/family.scss/
+/// chain.
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin middle($num) {
+    &:nth-child(#{round($num / 2)}) {
+        @content;
+    }
+}
+/// Select all children between the `$num` first and the `$num` last.
+/// https://lukyvj.github.io/family.scss/
+/// @group with-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - id of the child
+@mixin all-but-first-last($num) {
+    &:nth-child(n + #{$num}):nth-last-child(n + #{$num}) {
+        @content;
+    }
+}
+/// Select the first exact child
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin first-child() {
+    &:first-of-type {
+        @content;
+    }
+}
+/// Select the last exact child
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin last-child() {
+    &:last-of-type {
+        @content;
+    }
+}
+/// Select all even children.
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin even() {
+    &:nth-child(even) {
+        @content;
+    }
+}
+/// Select all odd children.
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin odd() {
+    &:nth-child(odd) {
+        @content;
+    }
+}
+/// Select only the first and last child.
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin first-last() {
+    &:first-child,
+    &:last-child {
+        @content;
+    }
+}
+/// Will only select the child if it’s unique.
+/// https://lukyvj.github.io/family.scss/
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @alias only
+@mixin unique() {
+    &:only-child {
+        @content;
+    }
+}
+/// Will only select children if they are not unique. Meaning if there is at
+/// https://lukyvj.github.io/family.scss/
+/// least 2 children, the style is applied.
+/// @group no-arguments
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+@mixin not-unique() {
+    &:not(:only-child) {
+        @content;
+    }
+}
+/// This mixin is used to automatically sort z-index in numerical order. But it
+/// https://lukyvj.github.io/family.scss/
+/// can also sort them in anti-numerical order, depending the parameters you use.
+/// @group using functions
+/// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
+/// @param {number} $num - Number of children
+/// @param {string} $direction [forward] - Direction of the sort
+/// @param {number} $index [0] - Index of the sorting
+@mixin child-index($num, $direction: 'forward', $index: 0) {
+    @for $i from 1 through $num {
+        @if ($direction == 'forward') {
+            &:nth-child(#{$i}) {
+                z-index: order-index($i, $index);
+                @content;
+            }
+        } @else if ($direction == 'backward') {
+            &:nth-last-child(#{$i}) {
+                z-index: order-index($i, $index);
+                @content;
+            }
+        }
+    }
+}
+/// Used by the child-index mixin. It will returned the proper sorted numbers
+/// https://lukyvj.github.io/family.scss/
+/// depending on the `$index` value.
+/// @access private
+/// @param {number} $num - Number of children
+/// @param {number} $index - Index of the sorting
+@function order-index($i, $index) {
+    @return ($index + $i);
+}

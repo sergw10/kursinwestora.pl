@@ -1,0 +1,458 @@
+// Webinar page styles.
+@import '../main';
+
+// Libs.
+@import '../libs/swiper';
+@import '../libs/_flipclock';
+
+// Parts.
+@import '../parts/lecturers';
+@import '../parts/contact_triggers_block';
+@import '../parts/form';
+
+.webinar-title {
+    position: relative;
+    text-align: center;
+    font-weight: 700;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+    padding-top: 170px;
+    padding-bottom: 70px;
+
+    @media screen and (max-width: 1199px) {
+        padding-top: 120px;
+        padding-bottom: 50px;
+    }
+
+    &:after {
+        @extend %emptyabsolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.65);
+        z-index: 1;
+    }
+
+    .webinar-title-content {
+        position: relative;
+        z-index: 2;
+
+        .ms-webinar-name {
+            color: $white;
+            font-size: 48px;
+            line-height: 58px;
+            text-transform: uppercase;
+            color: $white;
+            font-weight: map-get($weight, bold);
+            text-shadow: 2px 2px 10px $black;
+
+            @media screen and (max-width: 1440px) {
+                font-size: 42px;
+                line-height: 50px;
+            }
+            @media screen and (max-width: 1199px) {
+                font-size: 34px;
+                line-height: 38px;
+            }
+            @media screen and (max-width: 425px) {
+                font-size: 30px;
+                line-height: 36px;
+            }
+        }
+
+        .ms-webinar-time {
+            font-size: 36px;
+            line-height: 40px;
+            color: $white;
+            font-weight: map-get($weight, light);
+            text-shadow: 2px 2px 10px $black;
+            margin: 20px 0;
+
+            span {
+                font-weight: map-get($weight, normal);
+            }
+
+            @media screen and (max-width: 1199px) {
+                font-size: 30px;
+                line-height: 36px;
+            }
+            @media screen and (max-width: 768px) {
+                font-size: 24px;
+                line-height: 28px;
+                margin: 15px 0 15px;
+            }
+            @media screen and (max-width: 425px) {
+                font-size: 20px;
+                line-height: 24px;
+
+                span {
+                    font-weight: map-get($weight, semi-bold);
+                }
+            }
+        }
+    }
+}
+
+
+.webinar-clock-wrapper {
+    padding-bottom: 30px;
+
+	.flip-clock-wrapper {
+		display: inline-block;
+		width: auto;
+		margin: 0;
+	}
+
+	.flip-clock-wrapper .flip {
+		//box-shadow: 0 0 10px rgba(49,151,222,0.7);
+
+		/*@media screen and (max-width: 767px) {
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}*/
+	}
+
+	.flip-clock-wrapper ul {
+		width: 60px;
+		height: 90px;
+		font-size: 80px;
+		line-height: 90px;
+		margin: 5px;
+		border-radius: 5px;
+
+		@media screen and (max-width: 1024px) {
+			width: 44px;
+			height: 74px;
+			font-size: 60px;
+			line-height: 74px;
+			margin: 3px;
+		}
+		@media screen and (max-width: 767px) {
+			width: 28px;
+			height: 46px;
+			font-size: 38px;
+			line-height: 46px;
+			margin: 2px;
+		}
+		/*@media screen and (max-width: 425px) {
+			background: #666666;
+		}*/
+	}
+
+	.flip-clock-wrapper ul li {
+		font-size: inherit;
+		line-height: inherit;
+	}
+	.flip-clock-wrapper ul li a div {
+		font-size: inherit;
+	}
+	.flip-clock-wrapper ul li a div div.inn {
+		border-radius: 6px;
+    	font-size: inherit;
+
+		/*@media screen and (max-width: 425px) {
+			color: $white;
+			background: #666666;
+		}*/
+	}
+
+	.flip-clock-divider {
+		width: 20px;
+		height: 100px;
+
+		@media screen and (max-width: 1024px) {
+			height: 80px;
+			width: 14px;
+		}
+		@media screen and (max-width: 767px) {
+			height: 50px;
+			width: 10px;
+		}
+
+		&:first-child {
+			width: 0;
+		}
+
+		.flip-clock-dot {
+			width: 10px;
+			height: 10px;
+			left: 50%;
+			margin-left: -5px;
+
+			@media screen and (max-width: 767px) {
+				width: 6px;
+				height: 6px;
+				margin-left: -3px;
+			}
+
+			&.top {
+				top: 35px;
+			}
+			&.bottom {
+				bottom: 35px;
+			}
+
+			@media screen and (max-width: 1024px) {
+				&.top {
+					top: 25px;
+				}
+				&.bottom {
+					bottom: 25px;
+				}
+			}
+			@media screen and (max-width: 767px) {
+				/*background: #737373;*/
+
+				&.top {
+					top: 15px;
+				}
+				&.bottom {
+					bottom: 15px;
+				}
+			}
+		}
+
+		.flip-clock-label {
+			font-size: 18px;
+			// letter-spacing: 1px;
+			font-weight: map-get($weight, semi-bold);
+			display: block;
+			width: 140px;
+			text-align: center;
+			left: 20px;
+            top: auto;
+            bottom: -25px;
+			color: $white;
+            text-transform: lowercase;
+
+			@media screen and (max-width: 1024px) {
+				width: 100px;
+				left: 14px;
+			}
+			@media screen and (max-width: 767px) {
+				width: 64px;
+				left: 10px;
+				font-size: 15px;
+				letter-spacing: 1px;
+				color: $white;
+				font-weight: map-get($weight, normal);
+			}
+		}
+		&.days .flip-clock-label {
+			left: 0;
+		}
+	}
+
+	.flip-clock-dot {
+		background: rgba(255,255,255,0.7);
+	}
+}
+
+.webinar-info {
+	background-color: $light_grey;
+	font-weight: 300;
+
+	.wi-stats {
+		@extend %clearfix;
+		position: relative;
+		padding-left: 90px;
+		margin-bottom: 40px;
+
+        @media screen and (max-width: 425px) {
+            padding-left: 75px;
+        }
+        @media screen and (max-width: 320px) {
+            padding-left: 70px;
+        }
+
+		.wi-icon {
+			display: block;
+			position: absolute;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 66px;
+			text-align: left;
+			color: #aeaeae;
+			top: 0;
+			left: 0;
+
+            @media screen and (max-width: 425px) {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 58px;
+            }
+            @media screen and (max-width: 320px) {
+                width: 56px;
+                height: 56px;
+                line-height: 56px;
+                font-size: 54px;
+            }
+
+			i {
+				vertical-align: top;
+			}
+		}
+
+        .wi-info {
+			text-align: left;
+			text-transform: uppercase;
+            font-size: 30px;
+    		line-height: 30px;
+    		font-weight: map-get($weight, normal);
+    		text-transform: uppercase;
+			color: $dark_grey;
+
+    		@media screen and (max-width: 425px) {
+    			font-size: 26px;
+    			line-height: 26px;
+    		}
+            @media screen and (max-width: 320px) {
+    			font-size: 24px;
+    			line-height: 24px;
+    		}
+
+			.wi-info-row:first-child {
+				margin-bottom: 10px;
+			}
+
+			.wi-date,
+			.wi-time,
+			.wi-seats {
+				color: $main_color;
+				font-weight: map-get($weight, semi-bold);
+			}
+		}
+	}
+
+	.wi-desc {
+        font-size: 20px;
+        line-height: 26px;
+        color: $dark_grey;
+
+        @media screen and (max-width: 1199px) {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: map-get($weight, normal);
+        }
+
+        h2 {
+            color: $dark_blue;
+            text-transform: none;
+        	text-align: left;
+            font-size: 28px;
+            line-height: 32px;
+            font-weight: map-get($weight, normal);
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 1199px) {
+                font-size: 22px;
+                line-height: 26px;
+            }
+        }
+
+        a {
+            @include box-shadow(0 1px 0 0 $main_color);
+            //box-shadow: 0 0 2px 0 $main_color;
+
+            &:hover, &:active {
+                @include box-shadow(none);
+                border: none;
+            }
+        }
+
+		ul {
+			padding-left: 30px;
+			margin-bottom: 40px;
+			list-style-type: none;
+
+            @media screen and (max-width: 1199px) {
+                padding-left: 24px;
+            }
+
+			li {
+				margin-bottom: 15px;
+				display: block;
+				position: relative;
+
+				&:before {
+                    display: block;
+                    position: absolute;
+					text-align: left;
+					font-size: 20px;
+					line-height: 26px;
+					@extend %emptyabsolute;
+					content: "\f00c";
+					color: $main_color;
+					font-family: $fontawesome;
+					top: 0;
+					left: -30px;
+					width: 30px;
+					height: 30px;
+
+                    @media screen and (max-width: 1199px) {
+                        font-size: 18px;
+                        line-height: 20px;
+                        left: -25px;
+                    }
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		p {
+			text-indent: 40px;
+			margin-bottom: 40px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.interesting-facts {
+    background-color: #25292c;
+
+    &:before {
+		@extend %emptyabsolute;
+		width: 50%;
+		right: 0;
+		height: 100%;
+		top: 0;
+
+		@media screen and (min-width: 1200px) {
+			background-image: url("../../img/fakty.png");
+			background-repeat: no-repeat;
+			background-position: left center;
+			background-size: cover;
+		}
+	}
+
+    h2 {
+        color: $white;
+        margin-bottom: 40px;
+    }
+    .fact-content {
+        text-align: center;
+        color: $white;
+        font-size: 32px;
+        font-weight: 300;
+        line-height: 44px;
+        text-shadow: 1px 1px 5px #000;
+
+        @media screen and (max-width: 1199px) {
+            font-size: 26px;
+            line-height: 34px;
+        }
+        @media screen and (max-width: 425px) {
+            font-size: 22px;
+            line-height: 30px;
+        }
+    }
+}

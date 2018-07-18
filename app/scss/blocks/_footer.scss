@@ -1,0 +1,512 @@
+// Footer section.
+footer {
+	background-color: $dark_grey;
+	background-image: url("../../img/svg/mapa_swiata.svg");
+	background-repeat: no-repeat;
+	background-position: 15% center;
+	background-size: 40%;
+	padding-top: 70px;
+	color: #ebebeb;
+	font-size: 20px;
+	font-weight: map-get($weight, light);
+
+	@media screen and (max-width: 1880px) {
+		font-size: 16px;
+		background-position: 10% center;
+		background-size: 60%;
+	}
+
+	@media screen and (max-width: 1199px) {
+		background-position: left 110px;
+    	background-size: contain;
+	}
+
+	.blue-underline {
+		height: 30px;
+		font-size: 30px;
+		line-height: 30px;
+		font-weight: map-get($weight, light);
+		text-transform: uppercase;
+		position: relative;
+		margin-bottom: 60px;
+
+		@media screen and (max-width: 1199px) {
+			margin-bottom: 40px;
+			font-size: 26px;
+		}
+		@media screen and (max-width: 767px) {
+			text-align: center;
+		}
+
+		&:after {
+			@extend %emptyabsolute;
+			bottom: -30px;
+			width: 30%;
+			height: 1px;
+			left: 0;
+			background-color: $main_color;
+
+			@media screen and (max-width: 1199px) {
+				bottom: -20px;
+			}
+			@media screen and (max-width: 767px) {
+				left: 35%;
+			}
+		}
+
+		&.logo-underline {
+			padding-top: 0;
+			height: 60px;
+			margin-bottom: 30px;
+
+			&:after {
+				display: none;
+			}
+
+			@media screen and (max-width: 1199px) {
+				height: 50px;
+				margin-bottom: 40px;
+			}
+
+			.footer-logo {
+				display: inline-block;
+				width: 120px;
+				height: 60px;
+
+				@media screen and (max-width: 1199px) {
+					width: 100px;
+					height: 50px;
+				}
+
+				svg {
+					width: 100%;
+					height: 100%;
+
+					use.svg-footer-logo {
+						// width: 100%;
+						// height: 100%;
+						@include transition(all .3s ease);
+						fill: $white;
+					}
+				}
+
+				&:hover {
+					svg use.svg-footer-logo {
+						fill: $main_color;
+					}
+				}
+			}
+		}
+	}
+
+	.footer-first {
+		@media screen and (max-width: 1199px) {
+			margin-bottom: 40px;
+		}
+		.footer-link-wrap {
+			text-align: center;
+			@extend %clearfix;
+
+			.footer-link {
+				display: block;
+				text-align: left;
+				position: relative;
+				float: left;
+				line-height: 26px;
+				padding-left: 35px;
+				margin-bottom: 18px;
+				color: $white;
+				@include transition(all .3s ease);
+
+				@media screen and (max-width: 767px) {
+					display: inline-block;
+					float: none;
+				}
+
+				&:before {
+					@extend %emptyabsolute;
+					width: 26px;
+					height: 26px;
+					left: 0;
+					top: 0;
+					font-family: $fontawesome;
+				}
+
+				&.footer-office:before {
+					content: "\f041";
+				}
+
+				&.footer-email:before {
+					content: "\f0e0";
+				}
+
+				&.footer-phone:before {
+					content: "\f095";
+				}
+
+				&:hover,
+				&:active {
+					text-decoration: none;
+					color: $main_color;
+				}
+			}
+		}
+
+		.soc-wrapper {
+			display: block;
+			height: 45px;
+			line-height: 1;
+			margin-top: 23px;
+			clear: left;
+			text-align: center;
+			@extend %clearfix;
+
+			@media screen and (max-width: 1880px) {
+				height: 40px;
+				margin-top: 28px;
+			}
+
+			@media screen and (max-width: 1339px) {
+				height: 35px;
+				margin-top: 15px;
+			}
+
+			@media screen and (max-width: 767px) {
+				height: 40px;
+				margin-top: 0;
+			}
+
+			a {
+				display: block;
+				float: left;
+				width: 45px;
+				height: 45px;
+				border: 1px solid $white;
+				color: $white;
+				font-size: 24px;
+				text-align: center;
+				line-height: 45px;
+				margin-right: 20px;
+				@include transition(all .3s ease);
+
+				@media screen and (max-width: 1880px) {
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+				}
+
+				@media screen and (max-width: 1339px) {
+					width: 35px;
+					height: 35px;
+					line-height: 35px;
+					font-size: 20px;
+				}
+
+				@media screen and (max-width: 767px) {
+					display: inline-block;
+					float: none;
+					width: 40px;
+					height: 40px;
+					font-size: 24px;
+					line-height: 40px;
+					margin-right: 15px;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&:hover,
+				&:active {
+					background: rgba(0,0,0,0.35);
+					color: $main_color;
+				}
+			}
+		}
+	}
+
+	.footer-menu {
+		padding: 0;
+		line-height: 1;
+
+		@media screen and (max-width: 1199px) {
+			margin-bottom: 40px;
+		}
+
+		ul {
+			li {
+				line-height: 26px;
+				padding-bottom: 18px;
+
+				@media screen and (max-width: 767px) {
+					text-align: center;
+				}
+
+				&:last-child {
+					padding-bottom: 0;
+
+					@media screen and (max-width: 767px) {
+						padding-bottom: 18px;
+					}
+				}
+
+				a {
+					color: $white;
+					@include transition(all .3s ease);
+
+					&:hover,
+					&:active {
+						color: $main_color;
+						text-decoration: none;
+					}
+				}
+
+				&.active a {
+					font-weight: map-get($weight, normal);
+					color: $main_color;
+				}
+			}
+		}
+	}
+
+	.footer-articles {
+		@media screen and (max-width: 767px) {
+			margin-bottom: 40px;
+		}
+		li {
+			list-style: none;
+			margin-bottom: 20px;
+
+			@media screen and (max-width: 767px) {
+				padding: 0 10%;
+			}
+
+			@media screen and (max-width: 425px) {
+				padding: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.footer-article {
+				display: block;
+				position: relative;
+				padding-left: 105px;
+				height: 90px;
+				line-height: 30px;
+				overflow: hidden;
+				color: #ebebeb;
+
+				p {
+					padding-right: 30px;
+
+					@media screen and (max-width: 1199px) {
+						padding-right: 0;
+					}
+
+					&.footer-article-date {
+						color: #c3c3c3;
+						font-weight: map-get($weight, normal);
+						text-transform: uppercase;
+
+						strong {
+							@include transition(all .3s ease);
+							color: $white;
+							font-weight: map-get($weight, normal);
+						}
+					}
+				}
+
+				.footer-article-img {
+					height: 90px;
+					width: 90px;
+					line-height: 90px;
+					display: block;
+					position: absolute;
+					left: 0;
+					top: 0;
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-position: center;
+
+					&:before {
+						@extend %emptyabsolute;
+						opacity: 0;
+						width: 100%;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background: transparent;
+						text-align: center;
+						font-family: $fontawesome;
+						content: '\f19d';
+						font-size: 30px;
+						color: $white;
+						background: rgba(49,151,222,0.5);
+						@include transition(all .3s ease);
+					}
+				}
+
+				&:hover,
+				&:active {
+					color: $main_color;
+
+					p.footer-article-date strong {
+						color: $main_color;
+					}
+
+					.footer-article-img:before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+	}
+
+	.footer-subscribe {
+		height: 200px;
+		padding-bottom: 50px;
+		position: relative;
+		overflow-y: hidden;
+
+		@media screen and (max-width: 767px) {
+			height: auto;
+			padding-bottom: 0;
+		}
+
+		p {
+			line-height: 30px;
+			text-align: justify;
+		}
+
+		form {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			height: 50px;
+			width: 100%;
+			line-height: 50px;
+
+			@media screen and (max-width: 767px) {
+				margin-top: 16px;
+				position: relative;
+				bottom: auto;
+			}
+
+			.form-container {
+				width: 100%;
+				height: 100%;
+			}
+			input {
+				display: block;
+				width: 100%;
+				padding: 0 90px 0 20px;
+				border: 1px solid $white;
+				height: 100%;
+				font-size: 20px;
+				//line-height: 26px;
+				//padding: 15px 30px;
+				line-height: 1;
+				color: $white;
+				@include transition(all .3s ease);
+
+				&:active,
+				&:focus {
+					background: rgba(0,0,0,0.35);
+					border-color: $main_color;
+				}
+			}
+
+			button {
+				display: block;
+				cursor: pointer;
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 50px;
+				width: 50px;
+				line-height: 50px;
+				font-size: 28px;
+				background: $white;
+				color: $main_color;
+				@include transition(all .3s ease);
+
+				&:hover,
+				&:active,
+				&:focus {
+					color: $white;
+					background: $main_color;
+				}
+			}
+		}
+	}
+
+	.footer-bottom {
+		margin-top: 40px;
+
+		.footer-text {
+			font-size: 12px;
+			font-weight: map-get($weight, light);
+			line-height: 16px;
+			text-align: justify;
+
+			strong {
+				color: $white;
+				font-weight: map-get($weight, normal);
+			}
+
+			a {
+				display: inline-block;
+				color: $white;
+				text-decoration: underline;
+				font-weight: map-get($weight, normal);
+
+				&:hover {
+					text-decoration: none;
+					color: $main_color;
+				}
+			}
+		}
+
+		.to-top {
+			display: inline-block;
+			color: $white;
+			background-color: rgba(255,255,255,0.2);
+			width: 80px;
+			height: 40px;
+			padding-top: 8px;
+			text-align: center;
+
+			font-size: 24px;
+			line-height: 24px;
+			margin: auto;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -40px;
+			@include transition(all .3s ease);
+
+			&:hover,
+			&:active {
+				background-color: rgba(255,255,255,0.3);
+				height: 45px;
+			}
+		}
+
+		.footer-border {
+			height: 0;
+			border-top: 1px solid $black;
+			border-bottom: 1px solid #868686;
+			margin-top: 50px;
+			position: relative;
+		}
+
+		.copyrights {
+			font-size: 12px;
+			line-height: 40px;
+			color: #ebebeb;
+		}
+	}
+}

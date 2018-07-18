@@ -1,0 +1,113 @@
+.contact-triggers-wrap {
+    padding: 0;
+
+    @media screen and (min-width: 1440px) {
+        padding: 0 5%;
+    }
+    @media screen and (min-width: 1680px) {
+        padding: 0 10%;
+    }
+    @media screen and (min-width: 1920px) {
+        padding: 0 15%;
+    }
+}
+.contact-triggers-block {
+    background: $light_grey;
+    color: $dark_grey;
+
+    .ct-wrap {
+        .ct-content {
+            @media screen and (max-width: 991px) {
+                margin-bottom: 60px;
+            }
+
+            .ct-image {
+                padding: 0 0 20px;
+
+                .ct-svg-wrap {
+                    margin: 0 auto;
+                    width: 160px;
+                    height: 160px;
+                    padding: 30px;
+                    border-radius: 50%;
+                    text-align: center;
+
+                    background: $white;
+
+                    svg {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+            }
+            .ct-name {
+                text-align: center;
+                font-size: 28px;
+                line-height: 32px;
+                font-weight: map-get($weight, semi-bold);
+
+                @media screen and (max-width: 1199px) {
+                    font-size: 22px;
+                    line-height: 26px;
+                }
+            }
+            .ct-desc {
+                padding: 20px 15px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 26px;
+                font-weight: map-get($weight, normal);
+
+                strong {
+                    font-weight: map-get($weight, semi-bold);
+                }
+
+                @media screen and (max-width: 1199px) {
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+
+                @media screen and (max-width: 1440px) and (min-width: 992px) {
+                    padding: 20px 0;
+                }
+            }
+            .ct-link {
+                text-align: center;
+            }
+            .ct-phone {
+                text-align: center;
+                font-size: 20px;
+                line-height: 20px;
+
+                font-size: 28px;
+                line-height: 32px;
+                font-weight: map-get($weight, semi-bold);
+
+                a {
+                    color: $dark_blue;
+
+                    &:hover,
+                    &:active {
+                        color: $main_color;
+                    }
+                }
+
+                @media screen and (max-width: 1199px) {
+                    font-size: 16px;
+                    line-height: 16px;
+
+                    font-size: 22px;
+                    line-height: 26px;
+                }
+            }
+        }
+        &:first-child {
+
+        }
+        &:last-child {
+            .ct-content {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

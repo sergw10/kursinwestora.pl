@@ -1,0 +1,485 @@
+// Main styles for all project.
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+@import 'normalize';
+
+@import 'libs/bootstrap-grid/bootstrap';
+@import 'libs/fontawesome_v470/font-awesome';
+@import 'libs/jgrowl/jgrowl';
+@import 'libs/tooltipster/tooltipster';
+
+html {
+	height: 100%;
+	background: $light_grey;
+}
+body {
+	font-size: 16px;
+	min-width: 320px;
+	line-height: 1.6;
+	font-family: $roboto;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	position: relative;
+}
+main {
+	// Styles for header.
+	&.normal-main {
+		padding-top: 100px;
+
+		@media screen and (max-width: 1199px) {
+			padding-top: 70px;
+		}
+	}
+}
+
+// Main styles for structure blocks(sections).
+section {
+    position: relative;
+	@extend %clearfix;
+
+	// Class for overflow-hidden section.
+	&.section-overflow {
+		overflow-x: hidden;
+	}
+
+	// Standart section paddings.
+	&.section-p {
+		padding: 70px 0;
+
+		@media screen and (max-width: 1440px) {
+			padding: 50px 0;
+		}
+		@media screen and (max-width: 425px) {
+			padding: 30px 0;
+		}
+	}
+}
+
+a {
+	color: $main_color;
+}
+
+// Class for the image wrapper.
+.img-wrapper {
+	text-align: center;
+    max-width: 100%;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+// Main styles for headers.
+h1 {
+	&.hidden-h1 {
+        font-size: 0;
+        width: 1px;
+        height: 1px;
+        display: inline-block;
+        overflow: hidden;
+        position: absolute !important;
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent;
+        clip: rect(1px,1px,1px,1px);
+    }
+}
+h2 {
+	font-size: 40px;
+	line-height: 50px;
+
+    font-weight: map-get($weight, bold);
+    text-transform: uppercase;
+	text-align: center;
+	color: $dark_grey;
+
+	@media screen and (max-width: 1199px) {
+		font-size: 30px;
+		line-height: 36px;
+	}
+}
+
+// Standart buttons styles for all pages.
+.button {
+	cursor: pointer;
+	border: none;
+	display: inline-block;
+	text-transform: uppercase;
+	font-family: $roboto;
+	font-weight: map-get($weight, normal);
+	font-size: 20px;
+	padding: 20px 35px;
+	line-height: 24px;
+	@include transition(all .3s ease);
+
+	@media screen and (max-width: 1199px) {
+		font-size: 18px;
+		line-height: 22px;
+		padding: 15px 30px;
+	}
+
+	&.blue-white {
+		background-color: $main_color;
+		color: $white;
+
+		&:hover,
+		&:active {
+			background-color: $white;
+			color: $main_color;
+		}
+	}
+
+	&.blue {
+		background-color: $dark_blue;
+		color: $white;
+
+		&:hover,
+		&:active {
+			background-color: $main_color;
+			color: $white;
+		}
+	}
+
+	&.grey {
+		background-color: rgba(88, 88, 88, 0.9);
+		color: $white;
+
+		&:hover, &:active {
+			background-color: rgba(49, 151, 222, 0.9);
+		}
+	}
+
+	&.white {
+		background-color: $white;
+		color: $black;
+
+		&:hover, &:active {
+			color: $white;
+			background-color: $main_color;
+		}
+	}
+
+	&.transparent {
+		background-color: transparent;
+		color: $white;
+		border: 2px solid $white;
+		padding: 18px 35px;
+
+		@media screen and (max-width: 1199px) {
+			padding: 13px 30px;
+		}
+
+		&:hover,
+		&:active {
+			background-color: $white;
+			color: $main_color;
+		}
+	}
+
+	&.form-button {
+		color: $white;
+		background-color: #37b05d;
+
+		&:hover,
+		&:active {
+			background-color: $main_color;
+		}
+	}
+}
+// |END| Standart buttons styles for all pages.
+
+// Form preloader.
+.form-preload {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+
+	&.black-preload {
+		background: rgba(0,0,0,0.4);
+	}
+	&.white-preload {
+		background: rgba(255,255,255,0.6);
+	}
+
+	@include keyframes(pulsation) {
+		0% {
+			@include transform(scale(0.5, 0.5));
+			@include opacity(0.0);
+		}
+		50% {
+			@include opacity(1.0);
+		}
+		100% {
+			@include transform(scale(1.2, 1.2));
+			@include opacity(0.0);
+		}
+	}
+
+	.form-preloader {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 70px;
+		height: 30px;
+		margin-top: -15px;
+		margin-left: -35px;
+		// Ava logo as a preloader.
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20131.5%2050%27%3E%3Cpath%20d%3D%27m28.9%200l28.9%2050h-14.5l-14.4-25-14.7%2025h-14.2l28.9-50zm44.7%2050h14.2l14.7-25%2014.4%2025h14.5l-28.9-50-28.9%2050zm-7.9%200l29-50h-14.3l-14.7%2025-14.4-25h-14.5l28.9%2050z%27%20fill%3D%27%233197de%27%2F%3E%3C%2Fsvg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		@include animation('pulsation 2s ease-out');
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		@include opacity(0.0);
+	}
+}
+form.processing .form-preload {
+	display: block;
+}
+// |END| Form preloader.
+
+// Tooltips window.
+.tooltipster-follower {
+	.tooltipster-box {
+	    //background: rgba(49,151,222,0.9);
+		background: rgba(0,0,0,0.85);
+		border: none;
+	    border-bottom: 2px solid $main_color;
+		box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	    border-radius: 0;
+	}
+	.tooltipster-content {
+	    color: $white;
+	    line-height: 16px;
+		font-size: 12px;
+	    padding: 10px;
+	}
+}
+// |END| Tool tipst window.
+
+// Form error alerts validation.
+.form-container span.error {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    width: auto;
+    min-width: 200px;
+    height: auto;
+    background: $main_color;//rgba(49, 151, 222, 0.9);
+    color: $white;
+    font-size: 16px;
+    line-height: 20px;
+    bottom: 112%;
+    left: 0;
+    padding: 5px 10px;
+    //border-left: 2px solid $black;
+    cursor: default;
+    transform: none;
+    font-family: $roboto;
+	text-align: left;
+    font-weight: map-get($weight, normal);
+}
+.form-container.checkbox-container span.error {
+    bottom: 35px;
+}
+.form-container span.error:after {
+    @extend %emptyabsolute;
+    left: 10px;
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: $main_color transparent transparent transparent;
+    line-height: 0px;
+    _border-color: $main_color $black $black $black;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='$black');
+}
+// |END| Form error alerts validation.
+
+// Main styles for jGrowl notifications.
+.jGrowl {
+    z-index: 9999;
+    color: $white;
+    font-size: 13px;
+    font-family: $roboto;
+    position: fixed;
+}
+.jGrowl-notification {
+    background-color: $main_color;
+	padding: 10px 20px 10px 10px;
+	@include box-shadow(2px 2px 5px 0 #666);
+
+	&.response-popup-error {
+		background-color: #e02929;
+	}
+
+	&.response-popup-success {
+		background-color: #37b05d;
+	}
+
+	.jGrowl-close {
+		display: block;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		font-size: 20px;
+		text-align: center;
+		font-weight: map-get($weight, normal);
+		padding: 0;
+		@include transition(all .3s ease);
+
+		&:hover {
+			color: $black;
+		}
+	}
+	.jGrowl-header {
+		font-weight: map-get($weight, semi-bold);
+	    font-size: 1.15em;
+		line-height: 1.3em;
+		padding-bottom: 5px;
+		border-bottom: 1px solid rgba(255,255,255,0.4);
+		margin-bottom: 5px;
+	}
+	.jGrowl-message {
+	    font-size: 1em;
+		line-height: 1.25em;
+		font-weight: map-get($weight, normal);
+
+		strong {
+			font-style: italic;
+			font-size: 1.05em;
+			font-weight: map-get($weight, normal);
+		}
+	}
+}
+.jGrowl-closer {
+    background-color: #666666;
+
+	&:hover {
+		background-color: #555555;
+	}
+}
+// |END| Main styles for jGrowl notifications.
+
+// Form preloading circles animated.
+.preloader-block {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    .cssload-container{
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -36px;
+        margin-top: -12px;
+        width: 72px;
+        height: 24px;
+
+        .cssload-loading i {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            border-radius: 50%;
+            background: rgb(49,151,222);
+
+            &:first-child {
+                @include opacity(0);
+                @include animation('cssload-loading-ani2 0.5s linear infinite');
+                @include transform(translate(-14px));
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                @include animation('cssload-loading-ani3 0.5s linear infinite');
+            }
+
+            &:last-child {
+                @include animation('cssload-loading-ani1 0.5s linear infinite');
+            }
+        }
+    }
+}
+
+@include keyframes(cssload-loading-ani1) {
+    100% {
+        @include transform(translate(29px));
+    @include opacity(0);
+    }
+}
+@include keyframes(cssload-loading-ani2) {
+    100% {
+        @include transform(translate(14px));
+    @include opacity(1);
+    }
+}
+@include keyframes(cssload-loading-ani3) {
+    100% {
+        @include transform(translate(14px));
+    }
+}
+// |END| Form preloading circles animated.
+
+// Swiper slider bullets styles.
+.swiper-pagination-bullet {
+  width: 13px;
+  height: 13px;
+  border: 1px solid $main_color;
+  background-color: transparent;
+  @include opacity(1);
+  margin: 0 7px 0 8px!important;
+  z-index: 100;
+
+  @media screen and (min-width: 992px) {
+    width: 33px;
+    height: 33px;
+    margin: 0 13px 0 14px!important;
+  }
+}
+.swiper-pagination-bullet-active {
+  background-color: $main_color;
+}
+// |END| Swiper slider bullets styles.
+
+// Service classes
+.middle_after:after {
+  content: '';
+  width: 0px;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+svg {
+  use {
+    @include transition(all .3s ease);
+  }
+}
+// |END| Service classes.
+
+// Blocks.
+@import 'blocks/header';
+@import 'blocks/new_header';
+@import 'blocks/footer';

@@ -1,0 +1,217 @@
+// Webinar page styles.
+@import '../main';
+
+.gl-header-block {
+    padding-bottom: 40px;
+
+    @media screen and (max-width: 800px) {
+        padding-bottom: 20px;
+    }
+
+    .gl-header {
+        @extend %font_title;
+        font-weight: map-get($weight, bold);
+        text-transform: uppercase;
+    	text-align: center;
+    	color: $dark_grey;
+
+        @media screen and (max-width: 800px) {
+            @include font-size(22px);
+        }
+    }
+}
+
+.gl-letters-menu {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    border-bottom: 3px solid #c9c9c9;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 550px) {
+        border-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    a,
+    span {
+        flex: 1 1 0;
+        display: block;
+        margin-bottom: -3px;
+        padding-bottom: 20px;
+        @include font-size(36px);
+        font-family: "Roboto";
+        color: $dark_grey;
+        line-height: 1;
+        text-align: center;
+        border-bottom: 3px solid transparent;
+        line-height: 40px;
+        font-weight: 400;
+        transition: font-weight 0.1s linear;
+
+        @media screen and (max-width: 800px) {
+            @include font-size(30px);
+            line-height: 30px;
+        }
+        @media screen and (max-width: 550px) {
+            display: block;
+            flex: none;
+            padding: 0 15px 15px;
+            text-align: center;
+            width: 58px;
+            margin-bottom: 15px;
+            border-color: #c9c9c9;
+        }
+
+        &.active {
+            border-color: $black;
+            font-weight: 600;
+            color: $main_color;
+        }
+    }
+    span {
+        border-color: $black;
+        font-weight: 600;
+        color: $main_color;
+    }
+    a:hover {
+        border-color: $main_color;
+        font-weight: 500;
+        color: $black;
+    }
+}
+
+.gl-wrap {
+    position: relative;
+    @extend %clearfix;
+
+    .gl-inner {
+        padding: 0 15px;
+    }
+
+    &.hidden-content .preloader-block {
+        display: block;
+    }
+
+    .preloader-block {
+        background: $light_grey;
+
+        .cssload-container {
+            top: 0;
+            margin-top: 0;
+        }
+    }
+}
+.gl-letter {
+    display: block;
+    clear: left;
+    float: left;
+    width: auto;
+    @include font-size(36px);
+    line-height: 36px;
+    font-weight: 400;
+    padding: 21px 0px;
+    color: $dark_grey;
+    text-transform: uppercase;
+
+    &:hover {
+        font-weight: 600;
+    }
+
+    /*&:first-child {
+        padding-top: 0;
+    }*/
+    @media screen and (max-width: 800px) {
+        @include font-size(30px);
+        line-height: 30px;
+        padding: 24px 0px;
+    }
+}
+.gl-word {
+    display: block;
+    position: relative;
+    clear: left;
+    float: left;
+    width: auto;
+    color: $dark_blue;
+    @include font-size(20px);
+    line-height: 26px;
+    font-weight: 300;
+
+    &:after {
+        @extend %emptyabsolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        background: $dark_grey;
+        @include transition(all .3s linear);
+    }
+
+    &:hover {
+        color: $dark_grey;
+
+        &:after {
+            width: 100%;
+        }
+    }
+}
+.column {
+    padding: 0 15px;
+
+    &.first {
+        padding-left: 0;
+    }
+    &.last {
+        padding-right: 0;
+    }
+}
+.gl-letter-block{
+    padding-bottom: 30px 0 0;
+
+    .gl-word-heading {
+        @include font-size(36px);
+        line-height: 50px;
+        //font-weight: map-get($weight, bold);
+        text-transform: uppercase;
+    	text-align: center;
+    	color: $dark_grey;
+
+        @media screen and (max-width: 800px) {
+            @include font-size(22px);
+            line-height: 40px;
+        }
+    }
+}
+.gl-word-content-block {
+    padding-top: 20px;
+
+    .gl-word-content {
+        width: 100%;
+        max-width: 844px;
+        margin: 0 auto;
+        text-align: justify;
+
+        .gl-word-info {
+            color: $dark_blue;
+            @extend %font_usual;
+            padding-bottom: 30px;
+
+            p {
+                padding-top: 15px;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+            }
+            ul {
+                padding-top: 15px;
+                padding-left: 25px;
+                list-style-type: disc;
+            }
+        }
+        .gl-word-back-button-block {
+
+        }
+    }
+}

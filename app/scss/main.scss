@@ -16,6 +16,7 @@ html {
 body {
 	font-size: 16px;
 	min-width: 320px;
+  height: 100%;
 	line-height: 1.6;
 	font-family: $roboto;
 	overflow-x: hidden;
@@ -464,21 +465,12 @@ form.processing .form-preload {
 }
 // |END| Swiper slider bullets styles.
 
-// Service classes
-.middle_after:after {
-  content: '';
-  width: 0px;
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-}
-
+// Main settings.
 p,
 svg use {
   @include transition(all .3s ease);
 }
-
-// |END| Service classes.
+// |END| settings.
 
 // Parts
 @import 'parts/burger_menu';

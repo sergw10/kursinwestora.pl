@@ -17,7 +17,7 @@ $menu_mid_width: 700px;
   display: inline-block;
   @include transition(all .3s ease);
   
-  &:hover {
+  &_hovered:hover {
     @include transform(scale(1.05));
   }
 
@@ -39,6 +39,10 @@ $menu_mid_width: 700px;
   line-height: 100px;
   height: 100px;
 
+  &.js_show {
+    display: block;
+  }
+
   &__wrap {
     position: relative;
     width: $menu_large_width;
@@ -50,17 +54,57 @@ $menu_mid_width: 700px;
     text-align: center;
     text-transform: uppercase;
 
-    &.hover {
-
+    &.js_hover {
       .header {
         &-menu__link {
           color: $main_color;
         }
 
         &-submenu__wrap,
-        &-menu__blue-angle {
+        &-menu__link-blue-angle {
           display: block;
         }
+      }
+    }
+  }
+
+  &__item-arrow {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 35px;
+    height: 35px;
+    @include transition(all .3s ease);
+
+    &.js_rotate {
+      @include transform(rotate(180deg));
+    }
+
+    svg {
+    width: 16px;
+    height: 8px;
+    position: relative;
+    top: -9px;
+    left: 9px;
+
+      use {
+        fill: $white;
+      }
+    }
+  }
+
+  &__link-mobile-icon {
+    display: none;
+    line-height: 18px;
+    vertical-align: middle;
+
+    svg {
+      max-width: 18px;
+      max-height: 18px;
+
+      use {
+        fill: $white;
       }
     }
   }
@@ -69,9 +113,13 @@ $menu_mid_width: 700px;
     position: relative;
     font-size: 26px;
     color: $white;
+
+    &.js_blue_background {
+      background-color: rgba(49, 151, 222, 0.25);
+    }
   }
 
-  &__blue-angle {
+  &__link-blue-angle {
     display: none;
     position: absolute;
     z-index: 5;
@@ -92,6 +140,7 @@ $menu_mid_width: 700px;
 
   &__wrap {
     display: none;
+    overflow: hidden;
     height: 135px;
     position: absolute;
     background-color: rgba(51,51,51,0.9);
@@ -99,14 +148,27 @@ $menu_mid_width: 700px;
     top: 100px;
     left: 0;
     border-top: 4px solid $main_color;
+    @include transition(height .3s linear);
+
+    &.js_show {
+      display: inline-block;
+      height: auto;
+    }
   }
 
   &__item {
     width: $menu_large_width/5;
     text-transform: none;
-    float: left;
 
-    &.hover {
+    &_float-left {
+      float: left;
+    }
+
+    &_float-right {
+      float: right;
+    }
+
+    &.js_hover {
 
       .header-submenu__link-text {
         color: $main_color;
@@ -175,7 +237,7 @@ $menu_mid_width: 700px;
       font-size: 20px;
     }
 
-    &__blue-angle {
+    &__link-blue-angle {
       bottom: -24px;
     }
   }
@@ -211,9 +273,106 @@ $menu_mid_width: 700px;
 
   .header-menu {
     display: none;
+    position: fixed;
+    z-index: 1000;
+    overflow-x: auto;
+    top: 70px;
+    right: 0;
+    width: 267px;
+    height: 100%;
+    background-color: rgba(51,51,51,0.9);
+
+    &__wrap {
+      padding-bottom: 55px;
+    }
+    
+    &__wrap,
+    &__item {
+      width: 100%;
+      text-align: left;
+    }
+
+    &__item {
+      position: relative;
+      float: none;
+      min-height: 52px;
+      line-height: 52px;
+      cursor: pointer;
+    }
+
+    &__item-arrow {
+      display: block;
+    }
+
+    &__link,
+    &__link-mobile-icon {
+      display: inline-block;
+    }
+    
+    &__link {
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      padding: 0 0 0 17px;
+    }
+
+    &__link-mobile-icon {
+      margin-right: 17px;
+    }
+
+    &__link-blue-angle {
+      display: none;
+    }
+  }
+
+  .header-submenu {
+
+    &__wrap {
+      width: 100%;
+      background-color: transparent;
+      border-width: 0;
+      position: relative;
+      top: 0;
+      height: 0;
+      padding-left: 52px;
+    }
+
+    &__item {
+      width: 100%;
+      float: none;
+    }
+
+    &__link {
+      display: block;
+    }
+
+    &__link-img,
+    &__link-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+      
+    &__link-img {
+      padding: 0;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+
+    &__link-text {
+      margin-left: 22px;
+    }
   }
 }
 
+@media screen and ( max-width: 767px ) {
+
+  .header {
+    padding: 0 12px;
+  }
+}
 
 
 

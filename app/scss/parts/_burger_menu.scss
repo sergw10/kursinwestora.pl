@@ -12,7 +12,7 @@
     cursor: pointer;
     padding-top: 4px;
 
-    &:hover {
+    &_hovered:hover {
       .burger-menu__line {
         background-color: $main_color;
         &:before,
@@ -22,7 +22,7 @@
       }
     }
     
-    &.open {
+    &.js_open {
 
       .burger-menu__line {
         width: 0;

@@ -71,10 +71,10 @@ $menu_mid_width: 700px;
   &__item-arrow {
     display: none;
     position: absolute;
-    top: 8px;
+    top: 0;
     right: 8px;
     width: 35px;
-    height: 35px;
+    height: 52px;
     @include transition(all .3s ease);
 
     &.js_rotate {
@@ -85,7 +85,7 @@ $menu_mid_width: 700px;
     width: 16px;
     height: 8px;
     position: relative;
-    top: -9px;
+    top: 0;
     left: 9px;
 
       use {
@@ -334,7 +334,6 @@ $menu_mid_width: 700px;
       position: relative;
       top: 0;
       height: 0;
-      padding-left: 52px;
     }
 
     &__item {
@@ -343,6 +342,7 @@ $menu_mid_width: 700px;
     }
 
     &__link {
+      padding-left: 52px;
       display: block;
     }
 
